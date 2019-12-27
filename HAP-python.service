@@ -1,0 +1,13 @@
+[Unit]
+Description = HAP-python daemon
+After = local-fs.target network-online.target pigpiod.service
+
+[Service]
+User = pi
+# Script starting HAP-python, e.g. main.py
+# Be careful to set any paths you use, e.g. for persisting the state.
+WorkingDirectory = /home/pi/printer_light
+ExecStart = sh -c "sleep 20 && /usr/bin/python3 /home/pi/printer_light/main.py"
+
+[Install]
+WantedBy = multi-user.target
